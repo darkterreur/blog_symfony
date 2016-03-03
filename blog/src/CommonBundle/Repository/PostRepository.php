@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function findFiveLast($maxResults = 5, $sort = 'dateUpdate')
+    {
+        return $this->createQueryBuilder('p')
+            ->setMaxResults($maxResults)
+            ->orderBy('p.dateUpdate')
+            ->getQuery()
+            ->getResult();
+    }
 }

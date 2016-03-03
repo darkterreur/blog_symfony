@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,10 @@ class PostType extends AbstractType
             ->add('content', "textarea")
             ->add('dateAdd', 'datetime')
             ->add('dateUpdate', 'datetime')
-            ->add('refCategorie', 'entity')
+            ->add('refCategorie', EntityType::class, array(
+                'class' => 'CommonBundle:RefCategorie',
+                'choice_label' => 'title',
+            ))
         ;
     }
     

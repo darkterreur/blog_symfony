@@ -1,6 +1,6 @@
 <?php
 
-namespace FrontBundle\Controller;
+namespace AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,18 +11,12 @@ class IndexController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/", name="index")
+     * @Route("/", name="admin_index")
      * @Template
      */
     public function indexAction()
     {
-        $this->get('post.service');
-        $em = $this->getDoctrine()->getManager();
-
-        $posts = $em->getRepository('CommonBundle:Post')->findFiveLast();
-
         return array(
-            'posts' => $posts,
         );
     }
 }
