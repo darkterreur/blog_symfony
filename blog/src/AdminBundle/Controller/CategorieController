@@ -8,10 +8,14 @@ class CategorieController extends Controller
 {
 
     /**
-     * @Route("admin/add-categorie", name="add-categorie")
+     * @Route("/add-categorie", name="add-categorie")
      */
     public function afficheFormAddCategorie(Request $request)
     {
+
+
+
+
         return $this->render('AdminBundle:Resources:views:afficheFormAddCategorie.html.twig');
     }
 }
