@@ -16,10 +16,10 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', "textarea")
             ->add('dateAdd', 'datetime')
             ->add('dateUpdate', 'datetime')
-            ->add('refCategorie')
+            ->add('refCategorie', 'entity')
         ;
     }
     

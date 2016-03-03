@@ -11,7 +11,7 @@ class IndexController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/")
+     * @Route("/", name="index")
      * @Template
      */
     public function indexAction()
@@ -20,10 +20,8 @@ class IndexController extends Controller
 
         $posts = $em->getRepository('CommonBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return array(
             'posts' => $posts,
-        ));
-
-        return array('postList' => array());
+        );
     }
 }
