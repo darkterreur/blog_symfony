@@ -1,0 +1,9 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    {% for post in postList %}
+        {{ post.title }}
+    {% endfor %}
+{% endblock %}
