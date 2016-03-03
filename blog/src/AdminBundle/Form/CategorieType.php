@@ -1,13 +1,12 @@
 <?php
 
-namespace FrontBundle\Form;
+namespace AdminBundle\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PostType extends AbstractType
+class CategorieType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,17 +15,11 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content', "textarea")
-            ->add('dateAdd', 'datetime')
-            ->add('dateUpdate', 'datetime')
-            ->add('refCategorie', EntityType::class, array(
-                'class' => 'CommonBundle:RefCategorie',
-                'choice_label' => 'title',
-            ))
+            ->add('title', 'text')
+            ->add('save',  'submit')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

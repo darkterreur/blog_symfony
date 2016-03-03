@@ -32,6 +32,9 @@ class PostController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $post = $this->get('post.service')->safeInsertedData($post);
+
             $em->persist($post);
             $em->flush();
 
@@ -49,15 +52,16 @@ class PostController extends Controller
      *
      * @Route("/{id}", name="post_show")
      * @Method("GET")
+     * @Template
      */
     public function showAction(Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -65,26 +69,30 @@ class PostController extends Controller
      *
      * @Route("/{id}/edit", name="post_edit")
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function editAction(Request $request, Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
-        $editForm = $this->createForm('CommonBundle\Form\PostType', $post);
+        $editForm = $this->createForm('FrontBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $post = $this->get('post.service')->safeInsertedData($post);
+
             $em->persist($post);
             $em->flush();
 
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -104,7 +112,7 @@ class PostController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('post_index');
+        return $this->redirectToRoute('index');
     }
 
     /**

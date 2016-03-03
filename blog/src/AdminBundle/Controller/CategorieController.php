@@ -2,13 +2,15 @@
 
 namespace AdminBundle\Controller;
 
-
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CategorieController extends Controller
 {
 
     /**
-     * @Route("admin/add-categorie", name="add-categorie")
+     * @Route("/add-categorie", name="add-categorie")
      */
     public function afficheFormAddCategorie(Request $request)
     {
