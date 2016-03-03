@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -21,6 +22,7 @@ class PostController extends Controller
      *
      * @Route("/new", name="post_new")
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function newAction(Request $request)
     {
@@ -36,10 +38,10 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
-        return $this->render('post/new.html.twig', array(
+        return array(
             'post' => $post,
             'form' => $form->createView(),
-        ));
+        );
     }
 
     /**
