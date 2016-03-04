@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}Administration{% endblock %}
-
+{% block menu %}
+    {{ knp_menu_render('AdminBundle:Main:mainMenu') }}
+{% endblock %}
 {% block body %}
 <div id="wrapper">
     <div>
