@@ -94,6 +94,8 @@ table {
 	max-width:700px; 
 	min-width:400px; 
 	text-align:center; 
+	background-color: #FAFAFA;
+	margin-left: 20px;
 }
 
 table,th, td { 
@@ -106,6 +108,11 @@ th, td {
 	vertical-align:middle; 
 }
 
-th { 
-	background-image:url(table-shaded.png); 
+thead{
+	
+	background-color: #FFF3F3;
+}
+
+table tbody a{
+	text-decoration: none;
 }
