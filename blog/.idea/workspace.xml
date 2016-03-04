@@ -26,29 +26,27 @@
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Index/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-11.5161295">
-              <caret line="25" column="32" selection-start-line="23" selection-start-column="20" selection-end-line="25" selection-end-column="32" />
+              <caret line="26" column="32" selection-start-line="24" selection-start-column="20" selection-end-line="26" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/UserController.php">
+        <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="14.910448">
-              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-              <folding>
-                <element signature="e#42#71#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-4.0">
+              <caret line="39" column="52" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/PostController.php">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CommonBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7074911">
-              <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.26753864">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -72,18 +70,6 @@
             <state vertical-scroll-proportion="-4.2580647">
               <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontBundle/Form/UserType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.354838">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-              <folding>
-                <element signature="e#37#68#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +128,6 @@
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/CommonBundle/DataFixtures/ORM/LoadCategoriesData.php" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/src/CommonBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/CommonBundle/Repository/PostRepository.php" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Controller/SearchController.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/User/userAdd.html.twig" />
@@ -154,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Index/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/User/userShow.html.twig" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Controller/IndexController.php" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/User/new.html.twig" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Menu/Main.php" />
@@ -164,6 +148,8 @@
         <option value="$PROJECT_DIR$/src/CommonBundle/Service/PostService.php" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/Post/show.html.twig" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Controller/PostController.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Controller/UserController.php" />
+        <option value="$PROJECT_DIR$/src/CommonBundle/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -1095,16 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CommonBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76979744">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding>
-            <element signature="e#39#81#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CommonBundle/DataFixtures/ORM/LoadCategoriesData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9189687">
@@ -1205,20 +1181,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Index/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.5161295">
-          <caret line="25" column="32" selection-start-line="23" selection-start-column="20" selection-end-line="25" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/User/userShow.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41854936">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
           <folding>
-            <element signature="e#12#41#0#Twig" expanded="true" />
+            <element signature="e#12#41#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1258,20 +1226,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26159334">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontBundle/Menu/Main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44470868">
           <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
           <folding>
-            <element signature="e#914#933#1#PHP" expanded="true" />
+            <element signature="e#914#933#1#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1281,16 +1241,6 @@
         <state vertical-scroll-proportion="0.23543401">
           <caret line="9" column="36" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.910448">
-          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-          <folding>
-            <element signature="e#42#71#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1350,6 +1300,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7074911">
           <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33246753">
+          <caret line="53" column="52" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="52" />
+          <folding>
+            <element signature="e#42#71#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Index/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.5161295">
+          <caret line="26" column="32" selection-start-line="24" selection-start-column="20" selection-end-line="26" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="39" column="52" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CommonBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26753864">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding />
         </state>
       </provider>

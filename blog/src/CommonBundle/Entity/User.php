@@ -13,6 +13,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(
  *     fields={"username"},
  *     message="Le nom d'utilisateur existe déjà.")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email existe déjà.")
  */
 class User extends BaseUser
 {

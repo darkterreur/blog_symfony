@@ -15,7 +15,7 @@ class UserController extends Controller
     /**
      * Finds and displays a Post entity.
      *
-     * @Route("/{id}", name="user_show")
+     * @Route("/{id}", name="user_show_admin")
      * @Method("GET")
      * @Template
      */
@@ -51,7 +51,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show_admin', array('id' => $user->getId()));
         }
 
         return array(
