@@ -1,5 +1,75 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block body %}
+	<h1>User list</h1>
+
+    <table>
+        <thead>
+        <tr>
+             <th>Id</th>
+             <th>username</th>
+			 <th>username_canonical</th>
+			 <th>email</th>
+			 <th>email_canonical</th>
+			 <th>enabled</th>
+			 <th>salt</th>
+			 <th>password</th>
+			 <th>last_login</th>
+			 <th>locked</th>
+			 <th>expired</th>
+			 <th>expires_at</th>
+			 <th>confirmation_token</th>
+			 <th>password_requested_at</th>
+			 <th>roles</th>
+			 <th>credentials_expired</th>
+			 <th>credentials_expire_at</th>
+			 <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+            	<td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+            	<td>{{ user.username }}</td>
+				<td>{{ user.username_canonical }}</td>
+				<td>{{ user.email }}</td>
+				<td>{{ user.email_canonical }}</td>
+				<td>{{ user.enabled }}</td>
+				<td>{{ user.salt }}</td>
+				<td>{{ user.password }}</td>
+				<td>{% if user.last_login %}{{ user.last_login|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{{ user.locked }}</td>
+				<td>{{ user.expired }}</td>
+				<td>{% if user.expires_at %}{{ user.expires_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{{ user.confirmation_token }}</td>
+				<td>{% if user.password_requested_at %}{{ user.password_requested_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{{ user.roles }}</td>
+				<td>{{ user.credentials_expired }}</td>
+				<td>{% if user.credentials_expire_at %}{{ user.credentials_expire_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{{ user.Action }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('post_show', { 'id': user.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('post_edit', { 'id': user.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new entry</a>
+        </li>
+    </ul>
 
 {% endblock %}

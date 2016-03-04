@@ -8,13 +8,35 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends Controller
 {
+    
+    /**
+     * Finds and displays a Post entity.
+     *
+     * @Route("/{id}", name="user_show")
+     * @Method("GET")
+     * @Template
+     */
+    public function userShowAction(User $user)
+    {
+        $deleteForm = $this->userDeleteAction($user);
+
+        return array(
+            'post' => $user,
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+
+
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/user-add")
+     * @Method({"GET", "POST"})
      * @Template
      */
-    public function userAddAction()
+    public function userAddAction(Request $request)
     {
         $user = new User();
         $form = $this->createForm('UserBundle\Form\UserType', $user);
@@ -22,6 +44,9 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $user = $this->get('user.service')->safeInsertedData($user);
+
             $em->persist($user);
             $em->flush();
 
@@ -40,11 +65,31 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/user-update")
+     * @Method({"GET", "POST"})
      * @Template
      */
-    public function userUpdateAction()
+    public function userUpdateAction(Request $request, User $user)
     {
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AdminBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
 
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $this->get('post.service')->safeInsertedData($user);
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('post_edit', array('id' => $user->getId()));
+        }
+
+        return array(
+            'post' => $user,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
     }
 
 
@@ -53,13 +98,37 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/user-delete")
-     * @Template
+     * @Method("DELETE")
      */
-    public function userDeleteAction()
+    public function userDeleteAction(Request $request, User $user)
     {
+        $form = $this->createDeleteForm($user);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($user);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('index');
     }
 
+    /**
+     * Creates a form to delete a User entity.
+     *
+     * @param User $user The Post entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(User $user)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 
 
 }
