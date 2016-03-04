@@ -16,15 +16,22 @@ class UserController extends Controller
      */
     public function userAddAction()
     {
-        // $em = $this->getDoctrine()->getManager();
+        $user = new User();
+        $form = $this->createForm('UserBundle\Form\UserType', $user);
+        $form->handleRequest($request);
 
-        // $posts = $em->getRepository('CommonBundle:Post')->findAll();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-        // return $this->render('post/index.html.twig', array(
-        //     'posts' => $posts,
-        // ));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+        }
 
-        // return array('postList' => array());
+        return array(
+            'user' => $user,
+            'form' => $form->createView(),
+        );
     }
 
 
