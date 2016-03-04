@@ -13,6 +13,29 @@ use AdminBundle\Form\CategorieType;
 
 class CategorieController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/show-all", name="show_all_categories")
+     * @Template
+     */
+    public function showAllAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $paginator  = $this->get('knp_paginator');
+
+        $categoriesQuery = $em->getRepository('CommonBundle:RefCategorie')->findAll();
+
+        $pagination = $paginator->paginate(
+            $categoriesQuery,
+            $request->query->getInt('page', 1),
+            3
+        );
+
+        return array(
+            'pagination' => $pagination
+        );
+    }
 
     /**
      * @Route("/add-categorie", name="add-categorie")
@@ -43,7 +66,7 @@ class CategorieController extends Controller
     /**
      * Finds and displays a Categorie entity.
      *
-     * @Route("/show-categorie/{id}", name="show-categorie")
+     * @Route("/show-categorie/{id}", name="show_categorie")
      * @Method("GET")
      * @Template
      */
