@@ -12,4 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class RefCategorieRepository extends EntityRepository
 {
+
 }

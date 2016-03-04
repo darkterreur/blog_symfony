@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        button {
+            margin-left: 30%;
+        }
+        input {
+            margin-left:2%;
+        }
+        label{
+            margin-left:9%;
+        }
+    </style>
+    <h1>Création de catégorie</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
