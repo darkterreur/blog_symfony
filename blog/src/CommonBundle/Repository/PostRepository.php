@@ -12,11 +12,49 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     * Retrouve le post le plus récent
+     */
+    public function findMostRecent()
+    {
+        return $this->createQueryBuilder('p')->setMaxResults(1)->orderBy('p.dateUpdate', 'DESC')->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * Récupère la Query pour tous les psots
+     */
+    public function getQueryForAll()
+    {
+        return $this->createQueryBuilder('p')->getQuery();
+    }
+
+    /**
+     * Retourne les 5derniers posts trié par date
+     *
+     * @param int $maxResults
+     * @param string $sort
+     * @return array
+     */
     public function findFiveLast($maxResults = 5, $sort = 'dateUpdate')
     {
         return $this->createQueryBuilder('p')
             ->setMaxResults($maxResults)
             ->orderBy('p.dateUpdate')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Trouve les posts correspondants aut titre fourni
+     *
+     * @param $title
+     * @return array
+     */
+    public function findByTitleLike($title)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.title LIKE :title')
+            ->setParameter('title', $title)
             ->getQuery()
             ->getResult();
     }

@@ -1,5 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% block menu %}
+    {{ knp_menu_render('FrontBundle:Main:mainMenu') }}
+{% endblock %}
+
 {% block body %}
     <div id="wrapper">
         <div>

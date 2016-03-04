@@ -1,0 +1,52 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Recherche</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Rechercher" />
+    {{ form_end(form) }}
+
+    {% if searchResult is defined and searchResult is not empty %}
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Dateadd</th>
+                <th>Dateupdate</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in searchResult %}
+                <tr>
+                    <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.id }}</a></td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td>{% if post.dateAdd %}{{ post.dateAdd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if post.dateUpdate %}{{ post.dateUpdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <ul>
+        <li>
+            <a href="{{ path('index') }}">Retour à la page d'acceuil</a>
+        </li>
+    </ul>
+{% endblock %}
