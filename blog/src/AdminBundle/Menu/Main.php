@@ -20,15 +20,22 @@ class Main implements ContainerAwareInterface
         $em = $this->container->get('doctrine')->getManager();
 
         // findMostRecent and Blog are just imaginary examples
+        //$post = $em->getRepository('CommonBundle:Post')->findMostRecent();
+        $user = $em->getRepository('CommonBundle:User')->findMostRecent();
+        $categorie = $em->getRepository('CommonBundle:RefCategorie')->findMostRecent();
         $post = $em->getRepository('CommonBundle:Post')->findMostRecent();
 
-       // $menu->addChild('Article le plus récent', array(
-       //     'route' => 'post_show',
-       //     'routeParameters' => array('id' => $post->getId())
-      //  ));
-        $menu->addChild('Article le plus récent', array(
+       $menu->addChild('Article non valider', array(
             'route' => 'post_show',
             'routeParameters' => array('id' => $post->getId())
+        ));
+        $menu->addChild('Tous les utilisateurs', array(
+            'route' => 'admin_index',
+            'routeParameters' => array('user' => $user->getId())
+        ));
+        $menu->addChild('Toutes les categorie', array(
+            'route' => 'admin_index',
+            'routeParameters' => array('user' => $categorie->getId())
         ));
         // create another menu item
 //        $menu->addChild('About Me', array('route' => 'about'));
