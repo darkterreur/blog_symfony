@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use CommonBundle\Entity\Post;
-use CommonBundle\Form\PostType;
+use FrontBundle\Form\PostType;
 
 /**
  * Post controller.

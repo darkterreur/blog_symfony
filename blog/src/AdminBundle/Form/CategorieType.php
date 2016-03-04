@@ -26,7 +26,7 @@ class CategorieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CommonBundle\Entity\Post'
+            'data_class' => 'CommonBundle\Entity\RefCategorie'
         ));
     }
 }
