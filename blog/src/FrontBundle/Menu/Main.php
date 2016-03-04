@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Menu;
+namespace FrontBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -12,27 +12,29 @@ class Main implements ContainerAwareInterface
 
     public function mainMenu(FactoryInterface $factory, array $options)
     {
-    $menu = $factory->createItem('root');
+        $menu = $factory->createItem('root');
 
-    $menu->addChild('Home', array('route' => 'homepage'));
+        $menu->addChild('Page d\'accueil', array('route' => 'index'));
 
-    // access services from the container!
-    $em = $this->container->get('doctrine')->getManager();
-    // findMostRecent and Blog are just imaginary examples
-    $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
+        // access services from the container!
+        $em = $this->container->get('doctrine')->getManager();
 
-    $menu->addChild('Latest Blog Post', array(
-    'route' => 'blog_show',
-    'routeParameters' => array('id' => $blog->getId())
-    ));
+        // findMostRecent and Blog are just imaginary examples
+        $post = $em->getRepository('CommonBundle:Post')->findMostRecent();
 
-    // create another menu item
-    $menu->addChild('About Me', array('route' => 'about'));
-    // you can also add sub level's to your menu's as follows
-    $menu['About Me']->addChild('Edit profile', array('route' => 'edit_profile'));
+        $menu->addChild('Article le plus récent', array(
+            'route' => 'post_show',
+            'routeParameters' => array('id' => $post->getId())
+        ));
 
-    // ... add more children
+        // create another menu item
+//        $menu->addChild('About Me', array('route' => 'about'));
 
-    return $menu;
+        // you can also add sub level's to your menu's as follows
+//        $menu['About Me']->addChild('Edit profile', array('route' => 'edit_profile'));
+
+        // ... add more children
+
+        return $menu;
     }
 }

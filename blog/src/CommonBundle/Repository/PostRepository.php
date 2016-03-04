@@ -13,6 +13,14 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
     /**
+     * Retrouve le post le plus récent
+     */
+    public function findMostRecent()
+    {
+        return $this->createQueryBuilder('p')->setMaxResults(1)->orderBy('p.dateUpdate', 'DESC')->getQuery()->getOneOrNullResult();
+    }
+
+    /**
      * Récupère la Query pour tous les psots
      */
     public function getQueryForAll()

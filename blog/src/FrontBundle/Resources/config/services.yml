@@ -2,3 +2,9 @@ services:
     search.service:
         class:        FrontBundle\Service\SearchService
         arguments: [@doctrine.orm.entity_manager]
+
+    front.user.type:
+        class: FrontBundle\Form\UserType
+        tags:
+            - { name: form.type, alias: form_em }
+        arguments: [@doctrine.orm.entity_manager]
