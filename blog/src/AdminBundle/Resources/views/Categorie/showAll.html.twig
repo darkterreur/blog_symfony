@@ -1,0 +1,44 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Categorie list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td><a href="{{ path('show_categorie', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td>{{ categorie.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('show_categorie', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modification</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+
+{% endblock %}
