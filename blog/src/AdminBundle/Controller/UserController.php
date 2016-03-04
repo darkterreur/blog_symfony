@@ -2,8 +2,11 @@
 
 namespace AdminBundle\Controller;
 
+use CommonBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends Controller
@@ -18,10 +21,10 @@ class UserController extends Controller
      */
     public function userShowAction(User $user)
     {
-        $deleteForm = $this->userDeleteAction($user);
+        $deleteForm = $this->createDeleteForm($user);
 
         return array(
-            'post' => $user,
+            'user' => $user,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -44,8 +47,6 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            
-            $user = $this->get('user.service')->safeInsertedData($user);
 
             $em->persist($user);
             $em->flush();
@@ -77,12 +78,10 @@ class UserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $user = $this->get('post.service')->safeInsertedData($user);
-
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
         return array(
@@ -111,7 +110,7 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('admin_index');
     }
 
     /**

@@ -54,7 +54,7 @@ class PostRepository extends EntityRepository
     {
         return $this->createQueryBuilder('p')
             ->where('p.title LIKE :title')
-            ->setParameter('title', $title)
+            ->setParameter('title', '%'.$title.'%')
             ->getQuery()
             ->getResult();
     }

@@ -18,8 +18,6 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('content', "textarea")
-            ->add('dateAdd', 'datetime')
-            ->add('dateUpdate', 'datetime')
             ->add('refCategorie', EntityType::class, array(
                 'class' => 'CommonBundle:RefCategorie',
                 'choice_label' => 'title',
@@ -33,7 +31,8 @@ class PostType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CommonBundle\Entity\Post'
+            'data_class' => 'CommonBundle\Entity\Post',
+            'csrf_protection' => false
         ));
     }
 }

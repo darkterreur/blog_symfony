@@ -15,6 +15,9 @@ class Main implements ContainerAwareInterface
         $menu = $factory->createItem('root');
 
         $menu->addChild('Page d\'accueil', array('route' => 'index'));
+        $menu->addChild('Créer un compte', array('route' => 'user_new'));
+        $menu->addChild('Connexion', array('route' => 'fos_user_security_login'));
+        $menu->addChild('Créer un article', array('route' => 'post_new'));
 
         // access services from the container!
         $em = $this->container->get('doctrine')->getManager();

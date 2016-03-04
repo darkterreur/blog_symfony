@@ -7,23 +7,10 @@
         <thead>
         <tr>
              <th>Id</th>
-             <th>username</th>
-			 <th>username_canonical</th>
-			 <th>email</th>
-			 <th>email_canonical</th>
-			 <th>enabled</th>
-			 <th>salt</th>
-			 <th>password</th>
-			 <th>last_login</th>
-			 <th>locked</th>
-			 <th>expired</th>
-			 <th>expires_at</th>
-			 <th>confirmation_token</th>
-			 <th>password_requested_at</th>
-			 <th>roles</th>
-			 <th>credentials_expired</th>
-			 <th>credentials_expire_at</th>
-			 <th>Action</th>
+             <th>Pseudo</th>
+			 <th>Email</th>
+			 <th>Dernière connexion</th>
+			 <th>Rôles</th>
         </tr>
         </thead>
         <tbody>
@@ -31,29 +18,20 @@
             <tr {% if loop.index is odd %}class="color"{% endif %}>
             	<td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
             	<td>{{ user.username }}</td>
-				<td>{{ user.username_canonical }}</td>
 				<td>{{ user.email }}</td>
-				<td>{{ user.email_canonical }}</td>
-				<td>{{ user.enabled }}</td>
-				<td>{{ user.salt }}</td>
-				<td>{{ user.password }}</td>
-				<td>{% if user.last_login %}{{ user.last_login|date('Y-m-d H:i:s') }}{% endif %}</td>
-				<td>{{ user.locked }}</td>
-				<td>{{ user.expired }}</td>
-				<td>{% if user.expires_at %}{{ user.expires_at|date('Y-m-d H:i:s') }}{% endif %}</td>
-				<td>{{ user.confirmation_token }}</td>
-				<td>{% if user.password_requested_at %}{{ user.password_requested_at|date('Y-m-d H:i:s') }}{% endif %}</td>
-				<td>{{ user.roles }}</td>
-				<td>{{ user.credentials_expired }}</td>
-				<td>{% if user.credentials_expire_at %}{{ user.credentials_expire_at|date('Y-m-d H:i:s') }}{% endif %}</td>
-				<td>{{ user.Action }}</td>
+				<td>{{ user.lastLogin |date("d-m-Y H:i:s") }}</td>
+				<td>
+                    {% for role in user.roles  %}
+                        {{ role }}
+                    {% endfor %}
+                </td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('post_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('post_edit', { 'id': user.id }) }}">edit</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">Modification</a>
                         </li>
                     </ul>
                 </td>
