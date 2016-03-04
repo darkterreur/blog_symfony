@@ -4,6 +4,7 @@ namespace FrontBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends Controller
@@ -14,15 +15,21 @@ class IndexController extends Controller
      * @Route("/", name="index")
      * @Template
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $this->get('post.service');
         $em = $this->getDoctrine()->getManager();
+        $paginator  = $this->get('knp_paginator');
 
-        $posts = $em->getRepository('CommonBundle:Post')->findFiveLast();
+        $postsQuery = $em->getRepository('CommonBundle:Post')->getQueryForAll();
+
+        $pagination = $paginator->paginate(
+            $postsQuery,
+            $request->query->getInt('page', 1),
+            3
+        );
 
         return array(
-            'posts' => $posts,
+            'pagination' => $pagination
         );
     }
 }
