@@ -1,4 +1,4 @@
-{% extends 'AdminBundle::layout.html.twig' %}
+{% extends 'FrontBundle::layout.html.twig' %}
 
 {% block content %}
     <h1>Utilisateur</h1>
@@ -11,23 +11,7 @@
         </tr>
         <tr>
             <th>Pseudo</th>
-            <td>{{ user.username }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ user.email }}</td>
-        </tr>
-        <tr>
-            <th>Dernière connexion</th>
-            <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>roles</th>
-            <td>
-                {% for role in user.roles  %}
-                    {{ role }}
-                {% endfor %}
-            </td>
+            <td>{{ user.username}}</td>
         </tr>
         </tbody>
     </table>

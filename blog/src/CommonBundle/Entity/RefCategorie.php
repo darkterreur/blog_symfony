@@ -31,7 +31,7 @@ class RefCategorie
     /**
      * @var
      *
-     * @ORM\OneToMany(targetEntity="post", mappedBy="refCategorie")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="refCategorie")
      */
     private $posts;
 

@@ -4,13 +4,26 @@
     <h1>Post creation</h1>
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title) }}
+    {{ form_errors(form.title) }}
+
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content) }}
+    {{ form_errors(form.content) }}
+
+    {{ form_label(form.refCategorie) }}
+    {{ form_widget(form.refCategorie) }}
+    {{ form_errors(form.refCategorie) }}
+
     <input type="submit" value="Create" />
-    {{ form_end(form) }}
+
+    {{ form_errors(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('index') }}">Back to the list</a>
+            <a href="{{ path('index') }}">Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}

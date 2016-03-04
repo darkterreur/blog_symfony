@@ -34,6 +34,8 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $post = $this->get('post.service')->safeInsertedData($post);
+            $post = $this->get('post.service')->setDates($post, true);
+
 
             $em->persist($post);
             $em->flush();
@@ -81,11 +83,12 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $post = $this->get('post.service')->safeInsertedData($post);
+            $post = $this->get('post.service')->setDates($post);
 
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
         return array(
