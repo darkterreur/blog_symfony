@@ -1,0 +1,92 @@
+{% extends 'UserBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Post</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>username</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>username_canonical</th>
+            <td>{{ user.username_canonical }}</td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>email_canonical</th>
+            <td>{{ user.email_canonical }}</td>
+        </tr>
+        <tr>
+            <th>enabled</th>
+            <td>{{ user.enabled }}</td>
+        </tr>
+        <tr>
+            <th>salt</th>
+            <td>{{ user.salt }}</td>
+        </tr>
+        <tr>
+            <th>password</th>
+            <td>{{ user.password }}</td>
+        </tr>
+        <tr>
+            <th>last_login</th>
+            <td>{% if user.last_login %}{{ user.last_login|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>locked</th>
+            <td>{{ user.locked }}</td>
+        </tr>
+        <tr>
+            <th>expired</th>
+            <td>{{ user.expired }}</td>
+        </tr>
+        <tr>
+            <th>expires_at</th>
+            <td>{% if user.expires_at %}{{ user.expires_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>confirmation_token</th>
+            <td>{{ user.confirmation_token }}</td>
+        </tr>
+        <tr>
+            <th>password_requested_at</th>
+            <td>{% if user.password_requested_at %}{{ user.password_requested_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>roles</th>
+            <td>{{ user.roles }}</td>
+        </tr>
+        <tr>
+            <th>credentials_expired</th>
+            <td>{{ user.credentials_expired }}</td>
+        </tr>
+        <tr>
+            <th>credentials_expire_at</th>
+            <td>{% if user.credentials_expire_at %}{{ user.credentials_expire_at|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
