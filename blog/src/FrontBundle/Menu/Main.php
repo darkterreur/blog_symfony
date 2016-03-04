@@ -22,10 +22,12 @@ class Main implements ContainerAwareInterface
         // findMostRecent and Blog are just imaginary examples
         $post = $em->getRepository('CommonBundle:Post')->findMostRecent();
 
-        $menu->addChild('Article le plus récent', array(
-            'route' => 'post_show',
-            'routeParameters' => array('id' => $post->getId())
-        ));
+        if ($post) {
+            $menu->addChild('Article le plus récent', array(
+                'route' => 'post_show',
+                'routeParameters' => array('id' => $post->getId())
+            ));
+        }
 
         // create another menu item
 //        $menu->addChild('About Me', array('route' => 'about'));
